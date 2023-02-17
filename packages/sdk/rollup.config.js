@@ -1,4 +1,3 @@
-import dts from 'rollup-plugin-dts';
 import typescript from 'rollup-plugin-typescript2';
 import pkg from './package.json';
 
@@ -9,13 +8,13 @@ export default [
       {
         file: pkg.main,
         format: 'cjs',
-        sourcemap: true
+        sourcemap: true,
       },
       {
         file: pkg.module,
         format: 'es',
-        sourcemap: true
-      }
+        sourcemap: true,
+      },
     ],
     external: [...Object.keys(pkg.dependencies || {})],
     plugins: [
@@ -24,10 +23,5 @@ export default [
         typescript: require('typescript'),
       }),
     ],
-  },
-  {
-    input: './src/index.ts',
-    output: [{ file: 'lib/index.d.ts', format: 'es' }],
-    plugins: [dts()],
   },
 ];
