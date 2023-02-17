@@ -1,0 +1,1 @@
+export { exampleMethod } from './exampleMethod';
