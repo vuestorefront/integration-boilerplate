@@ -14,10 +14,10 @@ export default async () => {
   const server = await runMiddleware(app);
 
   // eslint-disable-next-line
-  globalThis.__MIDDLEWARE__ = server;
+  (globalThis as any).__MIDDLEWARE__ = server;
 };
 
-async function runMiddleware (app) {
+async function runMiddleware (app: any) {
   return new Promise(resolve => {
     const server = app.listen(8181, async () => {
       resolve(server);

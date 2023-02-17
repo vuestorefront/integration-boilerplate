@@ -7,20 +7,11 @@ import {
 } from './jest.const';
 
 let nockDone;
-
-beforeEach(async () => {
-  nockDone = await setupNock();
-});
-
-afterEach(() => {
-  nockDone();
-});
-
 /**
  * Sets Nock mode, fixture name and directory. Removes recorded requests to API Middleware
  * so that integration tests send them every time.
  */
-async function setupNock (customFixtureName) {
+async function setupNock (customFixtureName?) {
   nock.back.setMode(NOCK_MODE);
   nock.back.fixtures = path.join(__dirname, '../', NOCK_FIXTURES_CATALOG_NAME);
 
@@ -34,3 +25,12 @@ async function setupNock (customFixtureName) {
 
   return nockDone;
 }
+
+beforeEach(async () => {
+  nockDone = await setupNock();
+});
+
+afterEach(() => {
+  nockDone();
+});
+
