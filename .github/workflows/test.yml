@@ -33,6 +33,9 @@ jobs:
     needs: prepare_dependencies
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Build api-client
         run: cd ./packages/api-client && yarn build
 
@@ -44,6 +47,9 @@ jobs:
     needs: [prepare_dependencies, test_api_client]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Build SDK
         run: cd ./packages/sdk && yarn build
 
