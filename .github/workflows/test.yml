@@ -1,0 +1,50 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  prepare_dependencies:
+    name: Prepare dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+  test_api_client:
+    name: Test API Client - Unit tests
+    needs: prepare_dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build api-client
+        run: cd packages/api-client && yarn build
+
+      - name: Test api-client
+        run: cd packages/api-client && yarn test --coverage
+
+  test_sdk:
+    name: Test SDK connector - Unit & Integration tests
+    needs: prepare_dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build api-client
+        run: cd packages/api-client && yarn build
+
+      - name: Build SDK
+        run: cd packages/sdk && yarn build
+
+      - name: Test SDK (unit & integration)
+        run: cd packages/sdk && yarn test --coverage
