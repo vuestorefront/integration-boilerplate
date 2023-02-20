@@ -22,7 +22,7 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        uses: .github/actions/install-dependencies
+        uses: ./.github/actions/install-dependencies
         with:
           NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
           NPM_USER: ${{ secrets.NPM_USER }}
