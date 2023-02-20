@@ -3,10 +3,10 @@ name: Test
 on:
   push:
     branches:
-      - main
+      - ci/setup
   pull_request:
     branches:
-      - main
+      - ci/setup
 
 jobs:
   prepare_dependencies:
