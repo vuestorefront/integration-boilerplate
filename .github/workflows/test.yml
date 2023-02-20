@@ -22,7 +22,11 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        uses: .github/actions/install-dependencies
+        with:
+          NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+          NPM_USER: ${{ secrets.NPM_USER }}
+          NPM_PASS: ${{ secrets.NPM_PASS }}
 
   test_api_client:
     name: Test API Client - Unit tests
