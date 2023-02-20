@@ -11,7 +11,7 @@ inputs:
     description: 'repository NPM_EMAIL secret passed on'
     required: true
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -35,7 +35,3 @@ runs:
         npm install -g npm-cli-login
         npm-cli-login -u ${{ inputs.NPM_USER }} -p ${{ inputs.NPM_PASS }} -e ${{ inputs.NPM_EMAIL }} -r https://registrynpm.storefrontcloud.io
         yarn --frozen-lockfile
-
-    - name: Build webservices-sdk
-      shell: bash
-      run: cd packages/sap-commerce-webservices && yarn build
