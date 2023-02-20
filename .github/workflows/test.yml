@@ -34,21 +34,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build api-client
-        run: cd packages/api-client && yarn build
+        run: cd ./packages/api-client && yarn build
 
       - name: Test api-client
-        run: cd packages/api-client && yarn test --coverage
+        run: cd ./packages/api-client && yarn test --coverage
 
   test_sdk:
     name: Test SDK connector - Unit & Integration tests
-    needs: prepare_dependencies
+    needs: [prepare_dependencies, test_api_client]
     runs-on: ubuntu-latest
     steps:
-      - name: Build api-client
-        run: cd packages/api-client && yarn build
-
       - name: Build SDK
-        run: cd packages/sdk && yarn build
+        run: cd ./packages/sdk && yarn build
 
       - name: Test SDK (unit & integration)
-        run: cd packages/sdk && yarn test --coverage
+        run: cd ./packages/sdk && yarn test --coverage
