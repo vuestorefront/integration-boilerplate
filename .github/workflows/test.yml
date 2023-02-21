@@ -3,10 +3,10 @@ name: Test
 on:
   push:
     branches:
-      - ci/setup
+      - main
   pull_request:
     branches:
-      - ci/setup
+      - main
 
 jobs:
   build_and_test_packages:
