@@ -7,7 +7,7 @@ RUN apk add --no-cache \
 
 COPY . .
 
-# Run dependencies needed to build API Refenrece
+# Run dependencies needed to build API Reference
 RUN yarn install
 
 # Build docs
