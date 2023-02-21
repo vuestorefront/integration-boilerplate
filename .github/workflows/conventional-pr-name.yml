@@ -1,0 +1,29 @@
+name: Commitlint PR Title
+on:
+  pull_request:
+    types: ['opened', 'edited', 'reopened']
+
+jobs:
+  lint:
+    name: Validate PR Title (conventional-commit)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+        with:
+          NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+          NPM_USER: ${{ secrets.NPM_USER }}
+          NPM_PASS: ${{ secrets.NPM_PASS }}
+
+      - name: Install Dependencies
+        run: yarn
+
+      - uses: JulienKode/pull-request-name-linter-action@v0.2.0
