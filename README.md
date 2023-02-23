@@ -1,4 +1,4 @@
-# New integration boilerplate for VSF 2 integrations
+# SDK Based Integration Boilerplate for VSF 2
 
 This is a new integration boilerplate for VSF 2 integrations based on the SDK.
 
@@ -9,10 +9,10 @@ This is a new integration boilerplate for VSF 2 integrations based on the SDK.
 
 ## Repository structure
 
-This repository contains a few necessary packages to start building your new integration:
+This repository contains a few necessary packages to help you get started building your new integration:
 
-- `api-client` - API Client that is running on the middleware and creating a server-to-server connection with a service provider (e.g. commerce backend). It contains an `exampleEndpoint` with interfaces and unit tests, that can be used as an example for the rest API endpoints,
-- `sdk`- SDK Connector which can be considered as a communication layer between the storefront and the middleware. It contains an `exampleMethod` with example documentation, unit & integration tests, that can be sued as an example for the rest SDK connector methods,
+- `api-client` - The API Client runs in the middleware and creates a server-to-server connection with service providers (e.g. commerce backend). It contains an `exampleEndpoint` with interfaces and unit tests, that can be used as an example for the rest API endpoints,
+- `sdk`- Think of the SDK Connector as a communication layer between the storefront and the middleware. It contains an `exampleMethod` with example documentation, unit & integration tests, that can be used as an example for the rest SDK connector methods.
 - `demo` - Demonstrates the usage of `api-client` by creating an express server app. You can use this directory to demonstrate the usage of the integration.
 - `docs` - VuePress documentation with configured API extractor, to create an API Reference based on the `api-client` and `sdk` methods & interfaces.
 
