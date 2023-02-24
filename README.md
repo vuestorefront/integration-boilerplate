@@ -4,14 +4,14 @@ This is a new integration boilerplate for VSF 2 integrations based on the SDK.
 
 ## Requirements:
 
-- NodeJS v16 or later
-- [Yarn](https://yarnpkg.com/)
+- NodeJS v16 or later,
+- [Yarn](https://yarnpkg.com/).
 
 ## Repository structure
 
 This repository contains a few necessary packages to help you get started building your new integration:
 
-- `api-client` - The API Client runs in the middleware and creates a server-to-server connection with service providers (e.g. commerce backend). It contains an `exampleEndpoint` with interfaces and unit tests, that can be used as an example for the rest API endpoints,
+- `api-client` - The API Client runs in the middleware and creates a server-to-server connection with service providers (e.g. commerce backend). It contains an `exampleEndpoint` with interfaces and unit tests, that can be used as an example for the other API endpoints,
 - `sdk`- Think of the SDK Connector as a communication layer between the storefront and the middleware. It contains an `exampleMethod` with example documentation, unit & integration tests, that can be used as an example for the rest SDK connector methods.
 - `demo` - Demonstrates the usage of `api-client` by creating an express server app. You can use this directory to demonstrate the usage of the integration.
 - `docs` - VuePress documentation with configured API extractor, to create an API Reference based on the `api-client` and `sdk` methods & interfaces.
