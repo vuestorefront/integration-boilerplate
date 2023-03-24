@@ -1510,12 +1510,10 @@
     "@typescript-eslint/types" "4.33.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vsf-enterprise/sdk@alpha":
-  version "0.1.0-alpha.3"
-  resolved "https://registrynpm.storefrontcloud.io/@vsf-enterprise%2fsdk/-/sdk-0.1.0-alpha.3.tgz#dee2ee720c864f0d71aac90dbf8a059196a6bb65"
-  integrity sha512-I/fu7Eb7fnRsx5F/W5dCsWQAHqOuFAsup8sDjE5AJkVwFf+tF1hjqyMWXsvkJ+Y2ZRHYsOLa/TAUMM4murnREQ==
-  dependencies:
-    axios "^0.27.2"
+"@vsf-enterprise/sdk@1.0.0":
+  version "1.0.0"
+  resolved "https://registrynpm.storefrontcloud.io/@vsf-enterprise%2fsdk/-/sdk-1.0.0.tgz#4f2ee1149fbfc613a9f5c646d5eb783a8669fd77"
+  integrity sha512-RjDQIYa/vAR90nZtzj5OOMHxQIaQ/2XhIBOVmx/NqF+Yq1iOqE2TzfQPUgN6zP+Y+WlMzHG0C4NOMku1kYU92w==
 
 "@vue-storefront/middleware@3.0.0-rc.1":
   version "3.0.0-rc.1"

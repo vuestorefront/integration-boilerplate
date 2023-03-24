@@ -20,12 +20,12 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@vsf-enterprise/integration-boilerplate-api": "0.1.0",
-    "@vsf-enterprise/sdk": "alpha",
-    "axios": "^0.27.2",
-    "nock": "^13.2.9"
+    "axios": "^0.27.2"
   },
   "devDependencies": {
+    "@vsf-enterprise/integration-boilerplate-api": "0.1.0",
+    "@vsf-enterprise/sdk": "1.0.0",
+    "nock": "^13.2.9",
     "msw": "^0.47.3",
     "rollup-plugin-typescript2": "^0.33.0"
   },
