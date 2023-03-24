@@ -1,19 +1,28 @@
+import { boilerplateConnector } from './connector';
+import type { Options } from './types';
+import type { Module } from '@vsf-enterprise/sdk';
+
 /**
- * `sdk-connector` for Vue Storefront 2 integration bolierplate.
- *
- * @remarks
- * In here you can find all references to the integration SDK connector.
- *
- * @packageDocumentation
+ * Boulerplate module type.
  */
+export interface BoilerplateModuleType extends Module {
+  /**
+   * The connector of the Boilerplate module.
+   */
+  connector: ReturnType<typeof boilerplateConnector>;
+}
 
-import { client } from './client';
-import * as methods from './methods';
+/**
+ * Boilerplate module.
+ */
+export const boilerplateModule = (options: Options): BoilerplateModuleType => ({
+  connector: boilerplateConnector({
+    apiUrl: options.apiUrl,
+  }),
+  utils: {},
+  subscribers: {},
+});
 
-export const bolierplateSDK = (connectorConfig: { apiUrl: string }) => {
-  client.defaults.baseURL = new URL('boilerplate', connectorConfig.apiUrl).href;
-  return methods;
-};
+export { client } from './client';
 
 export * from './types';
-export * from './methods';
