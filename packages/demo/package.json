@@ -9,7 +9,7 @@
     "middleware": "node middleware.js"
   },
   "dependencies": {
-    "@vue-storefront/middleware": "3.0.0-rc.1",
+    "@vue-storefront/middleware": "3.0.0-rc.2",
     "@vsf-enterprise/integration-boilerplate-api": "*",
     "cors": "^2.8.5"
   },

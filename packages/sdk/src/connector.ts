@@ -8,7 +8,7 @@ import * as methods from './methods/index';
 type Methods = typeof methods;
 
 /**
- * Initialize the SAP Commerce Cloud connector.
+ * Initialize the Boilerplate connector.
  */
 export const boilerplateConnector = (options: Options): Methods => {
   client.defaults.baseURL = options.apiUrl;

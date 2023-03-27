@@ -17,9 +17,11 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@vue-storefront/middleware": "3.0.0-rc.1",
+    "@vue-storefront/middleware": "3.0.0-rc.2",
     "axios": "^0.21.1",
-    "consola": "^2.15.3",
+    "consola": "^2.15.3"
+  },
+  "devDependencies": {
     "jsdom": "^17.0.0"
   },
   "files": [
