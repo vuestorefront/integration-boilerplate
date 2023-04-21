@@ -4,7 +4,8 @@
   "license": "VSFEL",
   "scripts": {
     "build": "lerna run build",
-    "start": "cd playground/app && npm run dev",
+    "start": "concurrently --names \"Frontend,Middleware\" \"npm run start:app\" \"npm run start:middleware\"",
+    "start:app": "cd playground/app && npm run dev",
     "start:middleware": "cd playground/middleware && npm run dev",
     "test": "lerna run test",
     "prepare": "husky install"
@@ -23,6 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "concurrently": "^8.0.1",
     "cross-env": "^6.0.3",
     "eslint": "^7.20.0",
     "eslint-config-standard": "^16.0.2",
