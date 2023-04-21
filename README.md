@@ -1,5 +1,8 @@
 # SDK Based Integration Boilerplate for VSF 2
 
+> **For internal use only.**
+> All changes are recorded in the [CHANGELOG.md](CHANGELOG.md) file.
+
 This is a new integration boilerplate for VSF 2 integrations based on the SDK.
 
 ## Requirements:
