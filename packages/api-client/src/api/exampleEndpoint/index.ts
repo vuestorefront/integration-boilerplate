@@ -8,5 +8,5 @@ export const exampleEndpoint: Endpoints['exampleEndpoint'] = async (
 
   // Example request could look like this:
   // return await context.client.get(`example-url?id=${params.id}`);
-  return Promise.resolve({ success: true });
+  return { data: 'Hello, Vue Storefront Integrator!' };
 };

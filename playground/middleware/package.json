@@ -6,7 +6,7 @@
     "node": ">=16.x"
   },
   "scripts": {
-    "middleware": "node middleware.js"
+    "dev": "nodemon --watch node middleware.js"
   },
   "dependencies": {
     "@vue-storefront/middleware": "3.0.0-rc.2",
