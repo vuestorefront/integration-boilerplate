@@ -19,3 +19,4 @@ coverage
 # Editor directories and files
 .idea
 .vscode
+playground/app/*

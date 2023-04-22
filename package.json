@@ -51,15 +51,12 @@
     "vue-eslint-parser": "^7.0.0",
     "webpack-bundle-analyzer": "^3.5.2"
   },
-  "resolutions": {
-    "vue": "2.6.14",
-    "vue-server-renderer": "2.6.14"
-  },
   "engines": {
     "node": ">=16.x"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "playground/*"
   ],
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --fix"
