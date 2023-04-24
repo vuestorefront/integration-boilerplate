@@ -4,7 +4,7 @@ import { client } from '../../src/client';
 /** SETUP */
 const API_METHOD_NAME = 'exampleEndpoint';
 const PARAMS_MOCK = { id: 1 };
-const RESPONSE_MOCK = { data: { success: true } };
+const RESPONSE_MOCK = { data: "Hello, Vue Storefront Integrator!" };
 const ERROR_MOCK = new Error('error');
 
 jest.mock('../../src/client', () => ({
