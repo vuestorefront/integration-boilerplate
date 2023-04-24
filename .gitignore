@@ -20,3 +20,5 @@ coverage
 .idea
 .vscode
 playground/app/*
+
+.DS_Store
