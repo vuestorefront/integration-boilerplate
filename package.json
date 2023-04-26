@@ -7,8 +7,7 @@
     "start": "concurrently --names \"Frontend,Middleware\" \"npm run start:app\" \"npm run start:middleware\"",
     "start:app": "cd playground/app && npm run dev",
     "start:middleware": "cd playground/middleware && npm run dev",
-    "test": "lerna run test",
-    "prepare": "husky install"
+    "test": "lerna run test"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -33,7 +32,6 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^7.6.0",
-    "husky": "^7.0.4",
     "jest": "^27.4.7",
     "lerna": "^6.5.1",
     "lint-staged": "^10.0.7",
