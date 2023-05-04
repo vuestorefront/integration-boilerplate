@@ -1,5 +1,41 @@
 # SDK Based Integration Boilerplate for VSF 2
 
+## Creating a new integration? 
+The fastest way to get started is to use our CLI to generate a new integration boilerplate
+
+```bash
+npx @vsf create integration
+```
+
+The CLI will ask you a few questions and generate a new integration boilerplate based on your answers.
+
+For more information about creating a custom integration using the VSF SDK, please visit the [SDK documentation](https://docs.vuestorefront.io/sdk/custom-integrations/quick-start.html).
+
+From the project root, you can run the one of following commands, depending on your package manager:
+
+```bash
+yarn dev
+```
+or
+```bash
+npm run dev 
+```
+
+This will do the following: 
+- start the development server for the `playground/app` application.
+- start the middleware server for the `playground/middleware` application.
+
+Using the CLI is the recommended way to create a new integration boilerplate. 
+However, if you're planning to contribute, you can follow the steps below.
+___
+## Would you like to contribute?
+
+This is an open-source project. Feel free to contribute by creating a new issue or submitting a pull request. 
+We highly recommend opening an issue and getting feedback *before* submitting a pull request, to avoid unnecessary work.
+
+If we feel your contribution would benefit the community, and it adheres to our standards, 
+we would be delighted to accept your pull requests.
+
 > **For internal use only.**
 > All changes are recorded in the [CHANGELOG.md](CHANGELOG.md) file.
 
@@ -14,18 +50,13 @@ This is a new integration boilerplate for VSF 2 integrations based on the SDK.
 
 This repository contains a few necessary packages to help you get started building your new integration:
 
-- `api-client` - The API Client runs in the middleware and creates a server-to-server connection with service providers (e.g. commerce backend). It contains an `exampleEndpoint` with interfaces and unit tests, that can be used as an example for the other API endpoints,
-- `sdk`- Think of the SDK Connector as a communication layer between the storefront and the middleware. It contains an `exampleMethod` with example documentation, unit & integration tests, that can be used as an example for the rest SDK connector methods.
-- `demo` - Demonstrates the usage of `api-client` by creating an express server app. You can use this directory to demonstrate the usage of the integration.
+- `playground/app` - (created during CLI initialization) Demonstrates the usage of `api-client` by creating an express server app. You can use this directory to demonstrate the usage of the integration.
+- `playground/middleware` - An express app that uses the `api-client` to create a server-to-server connection with service providers (e.g. commerce backend).
+- `packages/api-client` - The service the middleware uses. It contains an `exampleEndpoint` that can be used as an example for the other API endpoints,
+- `packages/sdk`- Think of the SDK Connector as a communication layer between the storefront and the middleware. It contains an `exampleMethod` with example documentation, unit & integration tests, that can be used as an example for the rest SDK connector methods.
 - `docs` - VuePress documentation with configured API extractor, to create an API Reference based on the `api-client` and `sdk` methods & interfaces.
 
 ## Getting started
-
-1. Use this repository as a template.
-2. Navigate to `api-client` package and change all `boilerplate` occurrences to your integration name,
-3. Navigate to `sdk` package and change all `boilerplate` occurrences to your integration name,
-4. Navigate to `docs` package and change all `boilerplate` occurrences to your integration name,
-5. Install the dependencies,
 
 ```bash
 yarn
@@ -43,5 +74,5 @@ yarn build
 yarn test
 ```
 
-7.  That's it. Now you can start the development,
+7.  That's it. Now you can start the developing your contribution,
 8.  Enjoy.
