@@ -4,7 +4,7 @@
   "license": "VSFEL",
   "scripts": {
     "build": "lerna run build",
-    "dev": "concurrently --names \"Frontend,Middleware\" \"npm run start:app\" \"npm run start:middleware\"",
+    "dev": "concurrently --names \"Frontend,Middleware\" \"npm run dev:app\" \"npm run dev:middleware\"",
     "dev:app": "cd playground/app && npm run dev",
     "dev:middleware": "cd playground/middleware && npm run dev",
     "test": "lerna run test"
