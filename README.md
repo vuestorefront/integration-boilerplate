@@ -4,7 +4,7 @@
 The fastest way to get started is to use our CLI to generate a new integration boilerplate
 
 ```bash
-npx @vsf create integration
+ npx @vue-storefront/cli create integration
 ```
 
 The CLI will ask you a few questions and generate a new integration boilerplate based on your answers.
@@ -25,6 +25,20 @@ This will do the following:
 - start the development server for the `playground/app` application.
 - start the middleware server for the `playground/middleware` application.
 
+## Adding an endpoint
+
+```bash
+npx @vue-storefront/cli  add endpoint getSomething
+```
+
+This will do the following:
+- add a new endpoint to the `api-client` package
+- add a new method to the `sdk` package
+- add a new route to the `playground/middleware` application
+- add a new route to the `playground/app` application
+
+
+### Using vs Contriuibuting
 Using the CLI is the recommended way to create a new integration boilerplate. 
 However, if you're planning to contribute, you can follow the steps below.
 ___
