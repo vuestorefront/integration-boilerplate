@@ -43,9 +43,6 @@
     "packages/*",
     "playground/*"
   ],
-  "publishConfig": {
-    "registry": "https://registrynpm.storefrontcloud.io"
-  },
   "dependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0"

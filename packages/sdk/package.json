@@ -28,8 +28,5 @@
     "nock": "^13.2.9",
     "msw": "^0.47.3",
     "rollup-plugin-typescript2": "^0.34.1"
-  },
-  "publishConfig": {
-    "registry": "https://registrynpm.storefrontcloud.io"
   }
 }

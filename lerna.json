@@ -4,8 +4,7 @@
   "command": {
     "publish": {
       "message": "chore(release): %s",
-      "conventionalCommits": true,
-      "registry": "https://registrynpm.storefrontcloud.io"
+      "conventionalCommits": true
     }
   },
   "packages": [

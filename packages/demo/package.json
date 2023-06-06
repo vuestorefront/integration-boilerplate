@@ -16,8 +16,5 @@
   "files": [
     "lib/**/*",
     "server/**/*"
-  ],
-  "publishConfig": {
-    "registry": "https://registrynpm.storefrontcloud.io"
-  }
+  ]
 }
