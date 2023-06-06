@@ -31,7 +31,5 @@ runs:
     - name: Install dependencies
       shell: bash
       if: steps.yarn-cache.outputs.cache-hit != 'true'
-      run: |
-        npm install -g npm-cli-login
-        npm-cli-login -u ${{ inputs.NPM_USER }} -p ${{ inputs.NPM_PASS }} -e ${{ inputs.NPM_EMAIL }}
+      run: | 
         yarn --frozen-lockfile
