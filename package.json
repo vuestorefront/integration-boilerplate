@@ -1,5 +1,5 @@
 {
-  "name": "@vsf-enterprise/integration-boilerplate",
+  "name": "@vue-storefront/integration-boilerplate",
   "private": true,
   "license": "VSFEL",
   "scripts": {

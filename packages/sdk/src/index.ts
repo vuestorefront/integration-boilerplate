@@ -1,6 +1,6 @@
 import { boilerplateConnector } from './connector';
 import type { Options } from './types';
-import type { Module } from '@vsf-enterprise/sdk';
+import type { Module } from '@vue-storefront/sdk';
 
 /**
  * Boulerplate module type.
