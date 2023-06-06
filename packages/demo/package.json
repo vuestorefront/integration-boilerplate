@@ -1,5 +1,5 @@
 {
-  "name": "@vsf-enterprise/integration-boilerplate-demo",
+  "name": "@vue-storefront/integration-boilerplate-demo",
   "private": true,
   "version": "0.1.0",
   "engines": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@vue-storefront/middleware": "3.0.0-rc.2",
-    "@vsf-enterprise/integration-boilerplate-api": "*",
+    "@vue-storefront/integration-boilerplate-api": "*",
     "cors": "^2.8.5"
   },
   "files": [

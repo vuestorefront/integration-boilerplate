@@ -1,5 +1,5 @@
 {
-  "name": "@vsf-enterprise/integration-boilerplate-sdk",
+  "name": "@vue-storefront/integration-boilerplate-sdk",
   "version": "0.1.0",
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
@@ -23,8 +23,8 @@
     "axios": "^0.27.2"
   },
   "devDependencies": {
-    "@vsf-enterprise/integration-boilerplate-api": "0.1.0",
-    "@vsf-enterprise/sdk": "1.0.0",
+    "@vue-storefront/integration-boilerplate-api": "0.1.0",
+    "@vue-storefront/sdk": "1.0.0",
     "nock": "^13.2.9",
     "msw": "^0.47.3",
     "rollup-plugin-typescript2": "^0.34.1"
