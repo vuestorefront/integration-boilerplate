@@ -1,7 +1,7 @@
 {
   "name": "@vue-storefront/integration-boilerplate",
   "private": true,
-  "license": "VSFEL",
+  "license": "MIT",
   "scripts": {
     "build": "lerna run build",
     "dev": "concurrently --names \"Frontend,Middleware\" \"npm run dev:app\" \"npm run dev:middleware\"",
