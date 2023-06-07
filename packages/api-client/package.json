@@ -1,5 +1,5 @@
 {
-  "name": "@vsf-enterprise/integration-boilerplate-api",
+  "name": "@vue-storefront/integration-boilerplate-api",
   "version": "0.1.0",
   "sideEffects": false,
   "server": "server/index.js",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@vue-storefront/middleware": "3.0.0-rc.2",
     "axios": "^0.21.1",
-    "consola": "^2.15.3"
+    "consola": "^3.0.0"
   },
   "devDependencies": {
     "jsdom": "^17.0.0"
@@ -27,8 +27,5 @@
   "files": [
     "lib/**/*",
     "server/**/*"
-  ],
-  "publishConfig": {
-    "registry": "https://registrynpm.storefrontcloud.io"
-  }
+  ]
 }

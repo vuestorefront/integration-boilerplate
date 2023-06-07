@@ -1,4 +1,4 @@
 export type TODO = any;
 
-export { MethodOptions } from './MethodOptions';
-export { Options } from './options';
+export type { MethodOptions } from './MethodOptions';
+export type { Options } from './options';

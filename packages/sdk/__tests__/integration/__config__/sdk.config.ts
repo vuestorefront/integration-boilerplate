@@ -1,4 +1,4 @@
-import { initSDK, buildModule } from '@vsf-enterprise/sdk';
+import { initSDK, buildModule } from '@vue-storefront/sdk';
 import { boilerplateModule, BoilerplateModuleType } from '../../../src';
 
 const sdkConfig = {

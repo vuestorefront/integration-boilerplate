@@ -1,5 +1,5 @@
 {
-  "name": "@vsf-enterprise/integration-boilerplate-docs",
+  "name": "@vue-storefront/integration-boilerplate-docs",
   "version": "0.0.1",
   "private": true,
   "description": "Documentation for the new Integration boilerplate",
