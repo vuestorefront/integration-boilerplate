@@ -38,7 +38,7 @@ This will do the following:
 - add a new route to the `playground/app` application
 
 
-### Using vs Contriuibuting
+### Using vs Contributing
 Using the CLI is the recommended way to create a new integration boilerplate. 
 However, if you're planning to contribute, you can follow the steps below.
 ___
