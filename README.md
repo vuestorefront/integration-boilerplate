@@ -9,7 +9,7 @@ The fastest way to get started is to use our CLI to generate a new integration b
 
 The CLI will ask you a few questions and generate a new integration boilerplate based on your answers.
 
-For more information about creating a custom integration using the VSF SDK, please visit the [SDK documentation](https://docs.vuestorefront.io/sdk/custom-integrations/quick-start.html).
+For more information about creating a custom integration using the VSF SDK, please visit the [documentation](https://docs.vuestorefront.io/integrations/custom/quick-start).
 
 From the project root, you can run the one of following commands, depending on your package manager:
 
