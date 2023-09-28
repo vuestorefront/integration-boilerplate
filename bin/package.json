@@ -1,0 +1,24 @@
+{
+  "name": "@vsf-integration/boilerplate",
+  "version": "1.0.0",
+  "description": "cli for integration boilerplate",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "bin": {
+    "vsf": "./dist/index.mjs"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild"
+  },
+  "dependencies": {
+    "citty": "^0.1.4",
+    "unbuild": "^2.0.0"
+  }
+}
