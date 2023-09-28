@@ -1,24 +1,19 @@
 import { defineCommand, runMain } from 'citty';
 
+const _rDefault = (r) => r.default || r;
+const commands = {
+  add: () => import('./chunks/add.mjs').then(_rDefault)
+};
+
 const main = defineCommand({
   meta: {
-    name: "hello",
+    name: "vsf",
     version: "1.0.0",
-    description: "My Awesome CLI App"
+    description: "Integration Boilerplate CLI"
   },
-  args: {
-    name: {
-      type: "positional",
-      description: "Your name",
-      required: true
-    },
-    friendly: {
-      type: "boolean",
-      description: "Use friendly greeting"
-    }
-  },
-  run({ args }) {
-    console.log(`${args.friendly ? "Hi" : "Greetings"} ${args.name}!`);
+  subCommands: commands,
+  async setup(ctx) {
+    ctx.args._[0];
   }
 });
 const runCommand = () => runMain(main);

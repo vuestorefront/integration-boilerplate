@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "citty": "^0.1.4",
+    "scule": "^1.0.0",
     "unbuild": "^2.0.0"
   }
 }

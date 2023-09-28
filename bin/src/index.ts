@@ -1,25 +1,17 @@
 import { defineCommand, runMain } from "citty";
+import {commands} from "./commands"
 
 const main = defineCommand({
   meta: {
-    name: "hello",
+    name: "vsf",
     version: "1.0.0",
-    description: "My Awesome CLI App",
+    description: "Integration Boilerplate CLI",
   },
-  args: {
-    name: {
-      type: "positional",
-      description: "Your name",
-      required: true,
-    },
-    friendly: {
-      type: "boolean",
-      description: "Use friendly greeting",
-    },
-  },
-  run({ args }) {
-    console.log(`${args.friendly ? "Hi" : "Greetings"} ${args.name}!`);
-  },
+  subCommands: commands,
+  async setup(ctx) {
+    const command = ctx.args._[0];
+    
+  }
 });
 
 export const runCommand = () =>runMain(main);
