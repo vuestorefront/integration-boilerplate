@@ -582,7 +582,7 @@ function createConsola(options = {}) {
 const consola = createConsola();
 
 const nuxtPageMethod = ({ name }) => ({
-  path: `pages/methods/${name}.vue`,
+  path: `playground/app/pages/methods/${name}.vue`,
   contents: `
   <template>
   <div class="flex justify-center items-center h-screen">
@@ -681,7 +681,7 @@ function capitalizeFirst(input) {
 }
 
 const nextPageMethod = ({ name }) => ({
-  path: `pages/methods/${name}.tsx`,
+  path: `playground/app/pages/methods/${name}.tsx`,
   contents: `import { useState } from 'react';
 import { sdk } from '@/pages/_app';
 import { SfButton } from '@storefront-ui/react';

@@ -13,4 +13,12 @@ export interface Endpoints {
     context: BoilerplateIntegrationContext,
     params: TODO
   ): Promise<TODO>;
+    getDinner(context: BoilerplateIntegrationContext, params: TODO): Promise<TODO>;
+    getSpace(context: BoilerplateIntegrationContext, params: TODO): Promise<TODO>;
+    getCategories(context: BoilerplateIntegrationContext, params: TODO): Promise<TODO>;
+    getDeck(context: BoilerplateIntegrationContext, params: TODO): Promise<TODO>;
+    getYoutube(context: BoilerplateIntegrationContext, params: TODO): Promise<TODO>;
+    getX(context: BoilerplateIntegrationContext, params: TODO): Promise<TODO>;
+    getXx(context: BoilerplateIntegrationContext, params: TODO): Promise<TODO>;
+    getYY(context: BoilerplateIntegrationContext, params: TODO): Promise<TODO>;
 }
