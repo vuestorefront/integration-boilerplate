@@ -745,6 +745,21 @@ function getPlaygroundFramework(playgroundPath) {
   return noFramework;
 }
 
+const writeSDKMethod = async (endpoint, isOverwrite) => {
+  const sdkMethodPath = `./packages/sdk/src/methods/${endpoint}`;
+  const isFileExist = fs.existsSync(sdkMethodPath);
+  if (isFileExist && isOverwrite) {
+    fs.rmSync(sdkMethodPath, { recursive: true });
+  }
+  if (!isFileExist) {
+    fs.appendFileSync(
+      "./packages/sdk/src/methods/index.ts",
+      `
+export { ${endpoint} } from './${endpoint}';`
+    );
+  }
+};
+
 const writeToTypescriptFile = (path, endpoint) => {
   const fileName = path;
   const endpointName = endpoint;
@@ -773,19 +788,20 @@ const writeToTypescriptFile = (path, endpoint) => {
   sourceFile.saveSync();
 };
 
-const writeSDKMethod = async (endpoint, isOverwrite) => {
-  const sdkMethodPath = `./packages/sdk/src/methods/${endpoint}`;
-  const isFileExist = fs.existsSync(sdkMethodPath);
-  if (isFileExist && isOverwrite) {
-    fs.rmSync(sdkMethodPath, { recursive: true });
+const writeApiMethod = async (endpoint, isOverwrite) => {
+  const apiIndexPath = resolve(`./packages/api-client/src/api/index.ts`);
+  const typesMethodPath = resolve("./packages/api-client/src/types/api/endpoints.ts");
+  const ifFileExists = fs.existsSync(apiIndexPath);
+  console.log("******* ifFileExists: ", ifFileExists ?? "false");
+  if (ifFileExists && isOverwrite) {
+    fs.rmSync(apiIndexPath, { recursive: true });
   }
-  if (!isFileExist) {
-    fs.appendFileSync(
-      "./packages/sdk/src/methods/index.ts",
-      `
+  fs.appendFileSync(
+    apiIndexPath,
+    `
 export { ${endpoint} } from './${endpoint}';`
-    );
-  }
+  );
+  writeToTypescriptFile(typesMethodPath, endpoint);
 };
 
 const add = defineCommand({
@@ -835,9 +851,8 @@ const add = defineCommand({
     const isForce = ctx.args.force;
     if (entity === "endpoint") {
       makeTemplate("apiMethod", name, isForce);
-      const typesMethodPath = resolve("./packages/api-client/src/types/api/endpoints.ts");
-      writeToTypescriptFile(typesMethodPath, name);
       makeTemplate("sdkMethod", name, isForce);
+      writeApiMethod(name, isForce);
       writeSDKMethod(name, isForce);
       if (playgroundFramework === "next") {
         makeTemplate("nextPageMethod", name, isForce);

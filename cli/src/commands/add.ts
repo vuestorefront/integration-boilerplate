@@ -6,6 +6,7 @@ import { defineCommand } from 'citty'
 import { getPlaygroundFramework } from '../utils/getPlaygroundFramework'
 import { writeToTypescriptFile } from '../utils/writeTypescriptFile'
 import { writeSDKMethod } from '../utils/writeSdkMethod'
+import { writeApiMethod } from '../utils/writeApiMethod'
 
 export default defineCommand({
   meta: {
@@ -60,10 +61,8 @@ export default defineCommand({
     if (entity === 'endpoint') {
 
       makeTemplate('apiMethod', name, isForce)
-      const typesMethodPath = resolve('./packages/api-client/src/types/api/endpoints.ts');
-      writeToTypescriptFile(typesMethodPath, name)
-
       makeTemplate('sdkMethod', name, isForce)
+      writeApiMethod(name, isForce)
       writeSDKMethod(name, isForce)
 
       if (playgroundFramework === 'next') {
