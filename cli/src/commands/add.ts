@@ -62,8 +62,8 @@ export default defineCommand({
 
       makeTemplate('apiMethod', name, isForce)
       makeTemplate('sdkMethod', name, isForce)
-      writeApiMethod(name, isForce)
-      writeSDKMethod(name, isForce)
+      writeApiMethod(name)
+      writeSDKMethod(name)
 
       if (playgroundFramework === 'next') {
         makeTemplate('nextPageMethod', name, isForce)
