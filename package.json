@@ -4,6 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "vsf": "node vsf.js",
     "build": "lerna run build",
     "dev": "concurrently --names \"Frontend,Middleware\" \"npm run dev:app\" \"npm run dev:middleware\"",
     "dev:app": "cd playground/app && npm run dev",
