@@ -2,7 +2,8 @@ import { defineCommand, runMain } from 'citty';
 
 const _rDefault = (r) => r.default || r;
 const commands = {
-  add: () => import('./chunks/add.mjs').then(_rDefault)
+  add: () => import('./chunks/add.mjs').then(_rDefault),
+  call: () => import('./chunks/call.mjs').then(_rDefault)
 };
 
 const main = defineCommand({

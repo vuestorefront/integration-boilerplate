@@ -3,9 +3,6 @@ import { dirname, resolve } from 'pathe'
 import { consola } from 'consola'
 import { templates } from '../domains/add/templates'
 import { defineCommand } from 'citty'
-import { getPlaygroundFramework } from '../domains/add/getPlaygroundFramework'
-import { writeSDKMethod } from '../domains/add/writeSdkMethod'
-import { writeApiMethod } from '../domains/add/writeApiMethod'
 
 export default defineCommand({
   meta: {
@@ -25,53 +22,16 @@ export default defineCommand({
       type: 'boolean',
       description: 'Override existing file',
     },
-    entity: {
-      type: 'positional',
-      required: true,
-      valueHint: 'the entity you are adding. e.g. endpoint',
-    },
-    name: {
+    endpoint: {
       type: 'positional',
       required: true,
       valueHint: 'name',
     },
   },
   async run(ctx) {
-    const entity = ctx.args.entity
-    const name = ctx.args.name
-    const cwd = ctx.args.cwd || resolve('./playground/app')
+    const endpoint = ctx.args.endpoint
 
-    const entityOptions = ['endpoint']
-
-    if (!entityOptions.includes(entity)) {
-      consola.error(
-        `Entity ${entity} is not supported. Possible values: ${entityOptions.join(
-          ', ',
-        )}`,
-      )
-      process.exit(1)
-    }
-
-    const playgroundPath = resolve('./playground/app')
-    const playgroundFramework = getPlaygroundFramework(playgroundPath)
-
-    const isForce = ctx.args.force
-
-    if (entity === 'endpoint') {
-
-      makeTemplate('apiMethod', name, isForce)
-      makeTemplate('sdkMethod', name, isForce)
-      writeApiMethod(name)
-      writeSDKMethod(name)
-
-      if (playgroundFramework === 'next') {
-        makeTemplate('nextPageMethod', name, isForce)
-      }
-
-      if (playgroundFramework === 'nuxt') {
-        makeTemplate('nuxtPageMethod', name, isForce)
-      }
-    }
+    console.log('todo: make a call' + endpoint)
   }
 })
 
