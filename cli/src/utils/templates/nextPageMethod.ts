@@ -2,7 +2,7 @@ import { Template } from "./types";
 import { capitalizeFirst } from "../capitalizeFirst";
 
 export const nextPageMethod: Template = ({ name }) => ({
-  path: `pages/methods/${name}.tsx`,
+  path: `playground/app/pages/methods/${name}.tsx`,
   contents: `import { useState } from 'react';
 import { sdk } from '@/pages/_app';
 import { SfButton } from '@storefront-ui/react';

@@ -1,7 +1,7 @@
 import { Template } from "./types";
 
 export const nuxtPageMethod: Template = ({ name }) => ({
-  path: `pages/methods/${name}.vue`,
+  path: `playground/app/pages/methods/${name}.vue`,
   contents: `
   <template>
   <div class="flex justify-center items-center h-screen">
