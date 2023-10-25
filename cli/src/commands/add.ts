@@ -1,11 +1,13 @@
 import { existsSync, promises as fsp } from 'fs'
 import { dirname, resolve } from 'pathe'
-import { consola } from 'consola'
+import { createConsola } from 'consola'
 import { templates } from '../domains/add/templates'
 import { defineCommand } from 'citty'
 import { getPlaygroundFramework } from '../domains/add/getPlaygroundFramework'
 import { writeSDKMethod } from '../domains/add/writeSdkMethod'
 import { writeApiMethod } from '../domains/add/writeApiMethod'
+
+const consola = createConsola({ fancy: true })
 
 export default defineCommand({
   meta: {
@@ -35,6 +37,7 @@ export default defineCommand({
       required: true,
       valueHint: 'name',
     },
+
   },
   async run(ctx) {
     const entity = ctx.args.entity
@@ -96,22 +99,21 @@ async function makeTemplate(template: string, name: string, force = false) {
 
   // Resolve template
   const res = templates[template]({ name })
+  const prettyPath = res.path
 
   // Resolve full path to generated file
   const path = resolve(res.path)
 
   // Ensure not overriding user code
   if (!force && existsSync(path)) {
-    consola.error(
-      `File exists: ${path} . Use --force to override or use a different name.`,
-    )
+    consola.error(`File already exists: ${prettyPath}`)
+    consola.box("🚙 beep beep! We did't want to risk overwriting your awesome code. \n To overwrite this path ☝️ Use --force")
     process.exit(1)
   }
 
   // Ensure parent directory exists
   const parentDir = dirname(path)
   if (!existsSync(parentDir)) {
-    consola.info('Creating directory', parentDir)
     if (template === 'page') {
       consola.info('This enables vue-router functionality!')
     }
@@ -120,5 +122,5 @@ async function makeTemplate(template: string, name: string, force = false) {
 
   // Write file
   await fsp.writeFile(path, res.contents.trim() + '\n')
-  consola.info(`🪄 Generated a new ${template} in ${path}`)
+  consola.log(`🪄 Generated a new ${template}`)
 }

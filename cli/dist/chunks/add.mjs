@@ -1,5 +1,5 @@
 import fs, { existsSync, promises } from 'fs';
-import { c as consola } from '../shared/boilerplate.c6b6cfd2.mjs';
+import { createConsola } from 'consola';
 import { defineCommand } from 'citty';
 import { Project } from 'ts-morph';
 
@@ -205,36 +205,35 @@ function capitalizeFirst(input) {
 }
 
 const nextPageMethod = ({ name }) => ({
-  path: `playground/app/pages/methods/${name}.tsx`,
+  path: `playground/app/src/pages/methods/${name}.tsx`,
   contents: `import { useState } from 'react';
-import { sdk } from '@/pages/_app';
-import { SfButton } from '@storefront-ui/react';
-import { RenderJson } from '@/components/RenderJson';
-
-export default function Page${capitalizeFirst(name)}() {
-  const [data, setData] = useState<null | Object>(null);
-
-  const hitExampleMethodApi = async () => {
-    const data = await sdk.boilerplate.${name}('test');
-
-    setData(data);
-  };
-
-  return (
-    <>
-      <main className="flex flex-col items-center py-24 gap-12  text-white">
-        <SfButton type="button" onClick={hitExampleMethodApi}>
-          Call ${name}
-        </SfButton>
-
-        <div className="w-[500px] h-min-12 h-auto p-4 bg-gray-900 rounded-md flex items-center justify-center">
-          {!data ? 'Click the button' : <RenderJson json={data} />}
-        </div>
-      </main>
-    </>
-  );
-}
-
+  import { sdk } from '@/pages/_app';
+  import { SfButton } from '@storefront-ui/react';
+  import { RenderJson } from '@/components/RenderJson';
+  
+  export default function Page${capitalizeFirst(name)}() {
+    const [data, setData] = useState<null | Object>(null);
+  
+    const hitExampleMethodApi = async () => {
+      const data = await sdk.boilerplate.${name}('test');
+  
+      setData(data);
+    };
+  
+    return (
+      <>
+        <main className="flex flex-col items-center py-24 gap-12  text-white">
+          <SfButton type="button" onClick={hitExampleMethodApi}>
+            Call ${name}
+          </SfButton>
+  
+          <div className="w-[500px] h-min-12 h-auto p-4 bg-gray-900 rounded-md flex items-center justify-center">
+            {!data ? 'Click the button' : <RenderJson json={data} />}
+          </div>
+        </main>
+      </>
+    );
+  }  
 `
 });
 
@@ -320,6 +319,7 @@ export { ${endpoint} } from './${endpoint}';`
   writeToTypescriptFile(typesMethodPath, endpoint);
 };
 
+const consola = createConsola({ fancy: true });
 const add = defineCommand({
   meta: {
     name: "add",
@@ -393,23 +393,22 @@ async function makeTemplate(template, name, force = false) {
     process.exit(1);
   }
   const res = templates[template]({ name });
+  const prettyPath = res.path;
   const path = resolve(res.path);
   if (!force && existsSync(path)) {
-    consola.error(
-      `File exists: ${path} . Use --force to override or use a different name.`
-    );
+    consola.error(`File already exists: ${prettyPath}`);
+    consola.box("\u{1F699} beep beep! We did't want to risk overwriting your awesome code. \n To overwrite this path \u261D\uFE0F Use --force");
     process.exit(1);
   }
   const parentDir = dirname(path);
   if (!existsSync(parentDir)) {
-    consola.info("Creating directory", parentDir);
     if (template === "page") {
       consola.info("This enables vue-router functionality!");
     }
     await promises.mkdir(parentDir, { recursive: true });
   }
   await promises.writeFile(path, res.contents.trim() + "\n");
-  consola.info(`\u{1FA84} Generated a new ${template} in ${path}`);
+  consola.log(`\u{1FA84} Generated a new ${template}`);
 }
 
 export { add as default };

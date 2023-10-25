@@ -1,5 +1,5 @@
 import 'fs';
-import '../shared/boilerplate.c6b6cfd2.mjs';
+import 'consola';
 import { defineCommand } from 'citty';
 
 const call = defineCommand({

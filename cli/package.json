@@ -19,8 +19,10 @@
   },
   "dependencies": {
     "citty": "^0.1.4",
+    "consola": "^3.2.3",
     "scule": "^1.0.0",
     "ts-morph": "^20.0.0",
+    "typescript": "^5.2.2",
     "unbuild": "^2.0.0"
   }
 }
