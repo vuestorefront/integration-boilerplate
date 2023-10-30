@@ -9,7 +9,7 @@
     "dev": "nodemon --watch node middleware.js"
   },
   "dependencies": {
-    "@vue-storefront/middleware": "3.5.1",
+    "@vue-storefront/middleware": "3.6.1",
     "@vue-storefront/integration-boilerplate-api": "*",
     "cors": "^2.8.5"
   },
