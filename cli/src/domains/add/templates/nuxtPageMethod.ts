@@ -1,8 +1,9 @@
 import { Template } from "./types";
+import { config } from '../../../../cli.config'
 
 export const nuxtPageMethod: Template = ({ name }) => ({
-  path: `playground/app/pages/methods/${name}.vue`,
-  contents: `
+    path: `playground/app/pages/methods/${name}.vue`,
+    contents: `
   <template>
     <div class="flex justify-center items-center h-screen">
         <div class="p-5 w-96">
@@ -10,7 +11,7 @@ export const nuxtPageMethod: Template = ({ name }) => ({
                 Build something amazing
             </h1>
             <p class="text-gray-50">
-                ${name}
+              ${config.integrationName}/${name}
             </p>
             <div class="box">
                 <!-- <JsonViewer :value="jsonData" copyable boxed sort theme="light"  @onKeyClick="keyClick"/> -->
@@ -35,7 +36,7 @@ import "vue3-json-viewer/dist/index.css";
 const res = useState('waiting to call ${name} ...');
 
 async function callEndpoint() {
-    const { data } = await sdk.boilerplate.exampleMethod('test');
+    const { data } = await sdk.${config.integrationName}.${name}('test');
     res.value = data
 }
 

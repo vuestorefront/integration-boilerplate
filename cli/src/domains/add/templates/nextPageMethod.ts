@@ -1,5 +1,6 @@
 import { Template } from "./types";
 import { capitalizeFirst } from "../capitalizeFirst";
+import { config } from '../../../../cli.config'
 
 export const nextPageMethod: Template = ({ name }) => ({
   path: `playground/app/src/pages/methods/${name}.tsx`,
@@ -12,7 +13,7 @@ export const nextPageMethod: Template = ({ name }) => ({
     const [data, setData] = useState<null | Object>(null);
   
     const hitExampleMethodApi = async () => {
-      const data = await sdk.boilerplate.${name}('test');
+      const data = await sdk.${config.integrationName}.${name}('test');
   
       setData(data);
     };

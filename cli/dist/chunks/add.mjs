@@ -105,6 +105,10 @@ const dirname = function(p) {
   return segments.join("/") || (isAbsolute(p) ? "/" : ".");
 };
 
+const config = {
+  integrationName: "boilerplate"
+};
+
 const nuxtPageMethod = ({ name }) => ({
   path: `playground/app/pages/methods/${name}.vue`,
   contents: `
@@ -115,7 +119,7 @@ const nuxtPageMethod = ({ name }) => ({
                 Build something amazing
             </h1>
             <p class="text-gray-50">
-                ${name}
+              ${config.integrationName}/${name}
             </p>
             <div class="box">
                 <!-- <JsonViewer :value="jsonData" copyable boxed sort theme="light"  @onKeyClick="keyClick"/> -->
@@ -140,7 +144,7 @@ import "vue3-json-viewer/dist/index.css";
 const res = useState('waiting to call ${name} ...');
 
 async function callEndpoint() {
-    const { data } = await sdk.boilerplate.exampleMethod('test');
+    const { data } = await sdk.${config.integrationName}.${name}('test');
     res.value = data
 }
 
@@ -212,7 +216,7 @@ const nextPageMethod = ({ name }) => ({
     const [data, setData] = useState<null | Object>(null);
   
     const hitExampleMethodApi = async () => {
-      const data = await sdk.boilerplate.${name}('test');
+      const data = await sdk.${config.integrationName}.${name}('test');
   
       setData(data);
     };
