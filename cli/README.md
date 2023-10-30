@@ -1,8 +1,6 @@
-# The VSF CLI
+# The VSF Integration Builder's CLI
 
-The VSF CLI is a local command line interface for the Vue Storefront integration boilerplate. It allows you to quickly scaffold a new methods for your integration.
-
-You can make this cli you're own my adjust the templates and adding commands to make your development process even faster.
+The VSF Integration Builder's CLI is a local command line interface built to help you move quickly when creating an integration. It provides a fast and efficient way to scaffold new methods and perform various tasks related to your integration project.
 
 ## Usage
 run `yarn vsf` to see the available commands.
