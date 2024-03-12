@@ -1,5 +1,5 @@
 {
-  "name": "@vue-storefront/integration-boilerplate-playground",
+  "name": "@vue-storefront/integration-boilerplate-playground-middleware",
   "private": true,
   "version": "0.1.0",
   "engines": {

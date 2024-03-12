@@ -1,1 +1,1 @@
-export { Endpoints } from "@vue-storefront/integration-boilerplate-api";
+export { type Endpoints } from "@vue-storefront/integration-boilerplate-api";
