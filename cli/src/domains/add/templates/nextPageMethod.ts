@@ -1,6 +1,6 @@
 import { Template } from "./types";
 import { capitalizeFirst } from "../capitalizeFirst";
-import { config } from '../../../../cli.config'
+import { config } from "../../../../cli.config";
 
 export const nextPageMethod: Template = ({ name }) => ({
   path: `playground/app/src/pages/methods/${name}.tsx`,
@@ -32,4 +32,5 @@ export const nextPageMethod: Template = ({ name }) => ({
       </>
     );
   }  
-`})
+`,
+});

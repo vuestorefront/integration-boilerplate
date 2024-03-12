@@ -1,9 +1,9 @@
 import { Template } from "./types";
-import { config } from '../../../../cli.config'
+import { config } from "../../../../cli.config";
 
 export const nuxtPageMethod: Template = ({ name }) => ({
-    path: `playground/app/pages/methods/${name}.vue`,
-    contents: `
+  path: `playground/app/pages/methods/${name}.vue`,
+  contents: `
   <template>
     <div class="flex justify-center items-center h-screen">
         <div class="p-5 w-96">
@@ -45,4 +45,4 @@ function reset() {
 }
 </script>
 `,
-})
+});

@@ -1,3 +1,3 @@
 export const config = {
-  integrationName: "boilerplate"
-}
+  integrationName: "boilerplate",
+};

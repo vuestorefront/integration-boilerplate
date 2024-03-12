@@ -155,44 +155,14 @@ function reset() {
 `
 });
 
-const sdkMethod = ({ name }) => ({
-  path: `packages/sdk/src/methods/${name}/index.ts`,
-  contents: `import { client } from '../../client';
-import { TODO } from '../../types';
-
-/**
- * Method summary - General information about the SDK method, usually a single sentence.
- * 
- * @remarks
- * In this section, we have been adding detailed information such as:
- * * what API middleware endpoint this method is calling,
- * * what SAP OCC API endpoints are being called as a result of using this method,
- * * when this method can be used and when it can\u2019t (e.g. logged-in vs anonymous users),
- * * simply everything what helps with understanding how it works.
- * 
- * @param props
- * Just like our API methods, our SDK connector methods accept a single props parameter which carries relevant sub-properties. Therefore, there isn\u2019t much to be described within that TSDoc section.
- * 
- * @returns
- * Human-friendly information what the SDK methods returns.
- * 
- * @example
- * A short code snippet showing how to use the method. Usually we have more than one @example. We should strive for adding as many examples as possible here, with multiple param configurations.
- */
-export async function ${name}(props: TODO) {
-  const { data } = await client.post<TODO>('${name}', props);
-  return data
-}
-`
-});
-
 const apiMethod = ({ name }) => ({
   path: `packages/api-client/src/api/${name}/index.ts`,
-  contents: `import { Endpoints } from '../../types';
+  contents: `import consola from "consola";
+import { BoilerplateIntegrationContext, TODO } from "../../types";
 
-export const ${name}: Endpoints['${name}'] = async (
-  context,
-  params
+export const ${name} = async (
+  context: BoilerplateIntegrationContext,
+  params: TODO
 ) => {
   console.log('${name} has been called');
 
@@ -240,7 +210,6 @@ const nextPageMethod = ({ name }) => ({
 
 const templates = {
   apiMethod,
-  sdkMethod,
   nuxtPageMethod,
   nextPageMethod
 };
@@ -268,18 +237,6 @@ function getPlaygroundFramework(playgroundPath) {
   console.warn(noFramework);
   return noFramework;
 }
-
-const writeSDKMethod = async (endpoint) => {
-  const sdkMethodPath = `./packages/sdk/src/methods/${endpoint}`;
-  const isFileExist = fs.existsSync(sdkMethodPath);
-  if (isFileExist) {
-    fs.appendFileSync(
-      "./packages/sdk/src/methods/index.ts",
-      `
-export { ${endpoint} } from './${endpoint}';`
-    );
-  }
-};
 
 const writeToTypescriptFile = (path, endpoint) => {
   const fileName = path;
@@ -311,7 +268,9 @@ const writeToTypescriptFile = (path, endpoint) => {
 
 const writeApiMethod = async (endpoint) => {
   const apiIndexPath = resolve(`./packages/api-client/src/api/index.ts`);
-  const typesMethodPath = resolve("./packages/api-client/src/types/api/endpoints.ts");
+  const typesMethodPath = resolve(
+    "./packages/api-client/src/types/api/endpoints.ts"
+  );
   fs.appendFileSync(
     apiIndexPath,
     `
@@ -351,9 +310,8 @@ const add = defineCommand({
     }
   },
   async run(ctx) {
-    const entity = ctx.args.entity;
-    const name = ctx.args.name;
-    ctx.args.cwd || resolve("./playground/app");
+    const { entity } = ctx.args;
+    const { name } = ctx.args;
     const entityOptions = ["endpoint"];
     if (!entityOptions.includes(entity)) {
       consola.error(
@@ -368,9 +326,7 @@ const add = defineCommand({
     const isForce = ctx.args.force;
     if (entity === "endpoint") {
       makeTemplate("apiMethod", name, isForce);
-      makeTemplate("sdkMethod", name, isForce);
       writeApiMethod(name);
-      writeSDKMethod(name);
       if (playgroundFramework === "next") {
         makeTemplate("nextPageMethod", name, isForce);
       }
@@ -398,7 +354,9 @@ async function makeTemplate(template, name, force = false) {
   const path = resolve(res.path);
   if (!force && existsSync(path)) {
     consola.error(`File already exists: ${prettyPath}`);
-    consola.box("\u{1F699} beep beep! We did't want to risk overwriting your awesome code. \n To overwrite this path \u261D\uFE0F Use --force");
+    consola.box(
+      "\u{1F699} beep beep! We did't want to risk overwriting your awesome code. \n To overwrite this path \u261D\uFE0F Use --force"
+    );
     process.exit(1);
   }
   const parentDir = dirname(path);
@@ -408,7 +366,8 @@ async function makeTemplate(template, name, force = false) {
     }
     await promises.mkdir(parentDir, { recursive: true });
   }
-  await promises.writeFile(path, res.contents.trim() + "\n");
+  await promises.writeFile(path, `${res.contents.trim()}
+`);
   consola.log(`\u{1FA84} Generated a new ${template}`);
 }
 

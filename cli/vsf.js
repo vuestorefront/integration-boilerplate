@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { runCommand } from './dist/index.mjs'
+import { runCommand } from "./dist/index.mjs";
 
-runCommand()
+runCommand();

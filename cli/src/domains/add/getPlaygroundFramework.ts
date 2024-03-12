@@ -1,15 +1,15 @@
-
+/* eslint-disable no-plusplus */
 import fs from "fs";
 
 export function getPlaygroundFramework(playgroundPath: string) {
   const nextConfigPaths = [
     `${playgroundPath}/next.config.js`,
-    `${playgroundPath}/next.config.ts`
-  ]
+    `${playgroundPath}/next.config.ts`,
+  ];
   const nuxtConfigPaths = [
     `${playgroundPath}/nuxt.config.ts`,
-    `${playgroundPath}/nuxt.config.js`
-  ]
+    `${playgroundPath}/nuxt.config.js`,
+  ];
 
   for (let i = 0; i < nextConfigPaths.length; i++) {
     if (fs.existsSync(nextConfigPaths[i])) {

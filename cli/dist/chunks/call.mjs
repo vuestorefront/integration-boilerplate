@@ -27,8 +27,8 @@ const call = defineCommand({
     }
   },
   async run(ctx) {
-    const endpoint = ctx.args.endpoint;
-    console.log("todo: make a call" + endpoint);
+    const { endpoint } = ctx.args;
+    console.log(`todo: make a call${endpoint}`);
   }
 });
 
