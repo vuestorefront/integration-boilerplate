@@ -9,9 +9,9 @@ export const ${name} = async (
   context: BoilerplateIntegrationContext,
   params: TODO
 ) => {
-  console.log('${name} has been called');
+  consola.log("${name} has been called");
 
-  return { data: 'Hello from ${name} endpoint!' };
+  return { data: "Hello from ${name} endpoint!" };
 };
 `,
 });

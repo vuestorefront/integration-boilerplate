@@ -1,7 +1,6 @@
 import fs, { existsSync, promises } from 'fs';
 import { createConsola } from 'consola';
 import { defineCommand } from 'citty';
-import { Project } from 'ts-morph';
 
 function normalizeWindowsPath(input = "") {
   if (!input || !input.includes("\\")) {
@@ -113,43 +112,54 @@ const nuxtPageMethod = ({ name }) => ({
   path: `playground/app/pages/methods/${name}.vue`,
   contents: `
   <template>
-    <div class="flex justify-center items-center h-screen">
-        <div class="p-5 w-96">
-            <h1 class="typography-headline-2 font-bold mt-2 mb-4 text-green-500">
-                Build something amazing
-            </h1>
-            <p class="text-gray-50">
-              ${config.integrationName}/${name}
-            </p>
-            <div class="box">
-                <!-- <JsonViewer :value="jsonData" copyable boxed sort theme="light"  @onKeyClick="keyClick"/> -->
-                <h4 class="text-gray-50">Response</h4>
-                <JsonViewer class="min-h-[800px] min-w-[500px]" :value="res" expandDepth="5" expanded copyable boxed sort
-                    theme="dark" />
-            </div>
-            <div class="flex flex-col md:flex-row gap-4 mt-6">
-                <SfButton @click="callEndpoint" size="lg"> call </SfButton>
-                <SfButton @click="reset" size="lg" variant="secondary" class="bg-white"> reset </SfButton>
-            </div>
-        </div>
+  <div class="flex justify-center items-center h-screen">
+    <div class="p-5 w-96">
+      <h1 class="typography-headline-2 font-bold mt-2 mb-4 text-green-500">
+        Build something amazing
+      </h1>
+      <p class="text-gray-50">${config.integrationName}/${name}</p>
+      <div class="box">
+        <!-- <JsonViewer :value="jsonData" copyable boxed sort theme="light"  @onKeyClick="keyClick"/> -->
+        <h4 class="text-gray-50">Response</h4>
+        <JsonViewer
+          class="min-h-[800px] min-w-[500px]"
+          :value="res"
+          expandDepth="5"
+          expanded
+          copyable
+          boxed
+          sort
+          theme="dark"
+        />
+      </div>
+      <div class="flex flex-col md:flex-row gap-4 mt-6">
+        <SfButton @click="callEndpoint" size="lg"> call </SfButton>
+        <SfButton @click="reset" size="lg" variant="secondary" class="bg-white">
+          reset
+        </SfButton>
+      </div>
     </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { SfButton } from '@storefront-ui/vue';
-import { sdk } from '~/sdk.config';
-import { JsonViewer } from "vue3-json-viewer"
+import { SfButton } from "@storefront-ui/vue";
+import { JsonViewer } from "vue3-json-viewer";
 import "vue3-json-viewer/dist/index.css";
 
-const res = useState('waiting to call ${name} ...');
+const sdk = useSdk();
+const res = useState(
+  "${name}",
+  () => "waiting to call ${name}() ..."
+);
 
 async function callEndpoint() {
-    const { data } = await sdk.${config.integrationName}.${name}('test');
-    res.value = data
+  const { data } = await sdk.${config.integrationName}.${name}("test");
+  res.value = data;
 }
 
 function reset() {
-    res.value = 'waiting to call ${name} ...'
+  res.value = "waiting to call test ...";
 }
 <\/script>
 `
@@ -164,9 +174,9 @@ export const ${name} = async (
   context: BoilerplateIntegrationContext,
   params: TODO
 ) => {
-  console.log('${name} has been called');
+  consola.log("${name} has been called");
 
-  return { data: 'Hello from ${name} endpoint!' };
+  return { data: "Hello from ${name} endpoint!" };
 };
 `
 });
@@ -238,45 +248,13 @@ function getPlaygroundFramework(playgroundPath) {
   return noFramework;
 }
 
-const writeToTypescriptFile = (path, endpoint) => {
-  const fileName = path;
-  const endpointName = endpoint;
-  const contextType = "BoilerplateIntegrationContext";
-  const paramsType = "TODO";
-  const returnType = "TODO";
-  const project = new Project();
-  const sourceFile = project.addSourceFileAtPath(fileName);
-  const endpointsInterface = sourceFile.getInterface("Endpoints");
-  if (!endpointsInterface) {
-    console.error(`The "Endpoints" interface was not found in ${fileName}`);
-    process.exit(1);
-  }
-  const existingEndpoint = endpointsInterface.getMethod(endpointName);
-  if (existingEndpoint) {
-    existingEndpoint.remove();
-  }
-  endpointsInterface.addMethod({
-    name: endpointName,
-    parameters: [
-      { name: "context", type: contextType },
-      { name: "params", type: paramsType }
-    ],
-    returnType: `Promise<${returnType}>`
-  });
-  sourceFile.saveSync();
-};
-
 const writeApiMethod = async (endpoint) => {
   const apiIndexPath = resolve(`./packages/api-client/src/api/index.ts`);
-  const typesMethodPath = resolve(
-    "./packages/api-client/src/types/api/endpoints.ts"
-  );
   fs.appendFileSync(
     apiIndexPath,
-    `
-export { ${endpoint} } from './${endpoint}';`
+    `export { ${endpoint} } from "./${endpoint}";
+`
   );
-  writeToTypescriptFile(typesMethodPath, endpoint);
 };
 
 const consola = createConsola({ fancy: true });

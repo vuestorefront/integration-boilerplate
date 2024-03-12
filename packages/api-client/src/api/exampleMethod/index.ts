@@ -11,7 +11,7 @@ import { BoilerplateIntegrationContext, TODO } from "../../types";
  * @example
  * SDK usage:
  * ```ts
- * const result = await sdk.boilerplate.exampleMethod({ id: 1 });
+ * const result = await sdk.boilerplate.exampleMethod("test");
  * console.log(result); // { data: "Hello, Vue Storefront Integrator!" }
  * ```
  */
