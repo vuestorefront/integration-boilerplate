@@ -1,12 +1,18 @@
-import { Endpoints } from '../../types';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import consola from "consola";
+import { BoilerplateIntegrationContext, TODO } from "../../types";
 
-export const exampleEndpoint: Endpoints['exampleEndpoint'] = async (
-  context,
-  params
+/**
+ * Example method that is available in the Middleware as an `exampleEndpoint` endpoint.
+ * Use it as a reference for your own methods.
+ */
+export const exampleEndpoint = async (
+  context: BoilerplateIntegrationContext,
+  params: TODO
 ) => {
-  console.log('exampleEndpoint has been called');
+  consola.log("exampleEndpoint has been called");
 
   // Example request could look like this:
   // return await context.client.get(`example-url?id=${params.id}`);
-  return { data: 'Hello, Vue Storefront Integrator!' };
+  return { data: "Hello, Vue Storefront Integrator!" };
 };

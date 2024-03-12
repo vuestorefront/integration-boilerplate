@@ -1,6 +1,6 @@
 {
   "name": "@vue-storefront/integration-boilerplate-api",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "sideEffects": false,
   "server": "server/index.js",
   "main": "lib/index.cjs.js",
@@ -11,18 +11,19 @@
     "node": ">=16.x"
   },
   "scripts": {
+    "prepublishOnly": "yarn build",
     "build": "rimraf lib server && rollup -c",
     "dev": "rollup -c -w",
-    "test": "cross-env APP_ENV=test jest",
-    "prepublish": "yarn build"
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.js"
   },
   "dependencies": {
-    "@vue-storefront/middleware": "3.0.0-rc.2",
-    "axios": "^0.21.1",
-    "consola": "^3.0.0"
+    "@vue-storefront/middleware": "^3.9.0",
+    "consola": "^3.0.0",
+    "axios": "^0.21.1"
   },
   "devDependencies": {
-    "jsdom": "^17.0.0"
+    "@rollup/plugin-json": "^6.1.0"
   },
   "files": [
     "lib/**/*",

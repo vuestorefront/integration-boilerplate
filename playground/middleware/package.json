@@ -6,12 +6,16 @@
     "node": ">=16.x"
   },
   "scripts": {
-    "dev": "nodemon --watch node middleware.js"
+    "dev": "nodemon",
+    "lint": "eslint"
   },
   "dependencies": {
-    "@vue-storefront/middleware": "3.6.1",
+    "@types/cors": "^2.8.17",
     "@vue-storefront/integration-boilerplate-api": "*",
-    "cors": "^2.8.5"
+    "@vue-storefront/middleware": "^3.9.0",
+    "cors": "^2.8.5",
+    "nodemon": "^3.1.0",
+    "ts-node-dev": "^2.0.0"
   },
   "files": [
     "lib/**/*",
