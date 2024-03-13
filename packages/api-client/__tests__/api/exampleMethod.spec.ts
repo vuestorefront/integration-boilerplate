@@ -1,8 +1,8 @@
-// import { exampleEndpoint } from '../../src/api';
+// import { exampleMethod } from '../../src/api';
 // import { contextMock } from '../../__mocks__/context.mock';
 // import consola from 'consola';
 
-describe("[Integration Boilerplate API] exampleEndpoint", () => {
+describe("[Integration Boilerplate API] exampleMethod", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
