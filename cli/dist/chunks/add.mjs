@@ -111,7 +111,7 @@ const config = {
 const nuxtPageMethod = ({ name }) => ({
   path: `playground/app/pages/methods/${name}.vue`,
   contents: `
-  <template>
+<template>
   <div class="flex justify-center items-center h-screen">
     <div class="p-5 w-96">
       <h1 class="typography-headline-2 font-bold mt-2 mb-4 text-green-500">
@@ -187,34 +187,34 @@ function capitalizeFirst(input) {
 
 const nextPageMethod = ({ name }) => ({
   path: `playground/app/src/pages/methods/${name}.tsx`,
-  contents: `import { useState } from 'react';
-  import { sdk } from '@/pages/_app';
-  import { SfButton } from '@storefront-ui/react';
-  import { RenderJson } from '@/components/RenderJson';
-  
-  export default function Page${capitalizeFirst(name)}() {
-    const [data, setData] = useState<null | Object>(null);
-  
-    const hitExampleMethodApi = async () => {
-      const data = await sdk.${config.integrationName}.${name}('test');
-  
-      setData(data);
-    };
-  
-    return (
-      <>
-        <main className="flex flex-col items-center py-24 gap-12  text-white">
-          <SfButton type="button" onClick={hitExampleMethodApi}>
-            Call ${name}
-          </SfButton>
-  
-          <div className="w-[500px] h-min-12 h-auto p-4 bg-gray-900 rounded-md flex items-center justify-center">
-            {!data ? 'Click the button' : <RenderJson json={data} />}
-          </div>
-        </main>
-      </>
-    );
-  }  
+  contents: `import { useState } from "react";
+import { SfButton } from "@storefront-ui/react";
+import { RenderJson } from "@/components/RenderJson";
+import { getSdk } from "@/sdk";
+
+export default function Page${capitalizeFirst(name)}() {
+  const sdk = getSdk();
+  const [data, setData] = useState<null | Object>(null);
+
+  const hit${capitalizeFirst(name)}Api = async () => {
+    const data = await sdk.${config.integrationName}.${name}("test");
+    setData(data);
+  };
+
+  return (
+    <>
+      <main className="flex flex-col items-center py-24 gap-12  text-white">
+        <SfButton type="button" onClick={hit${capitalizeFirst(name)}Api}>
+          Call ${name}
+        </SfButton>
+
+        <div className="w-[500px] h-min-12 h-auto p-4 bg-gray-900 rounded-md flex items-center justify-center">
+          {!data ? "Click the button" : <RenderJson json={data} />}
+        </div>
+      </main>
+    </>
+  );
+}  
 `
 });
 
