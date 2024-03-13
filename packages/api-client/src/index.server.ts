@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { apiClientFactory } from '@vue-storefront/middleware';
-import { MiddlewareConfig } from './index';
-import * as apiEndpoints from './api';
+import axios from "axios";
+import { apiClientFactory } from "@vue-storefront/middleware";
+import { MiddlewareConfig } from "./index";
+import * as apiEndpoints from "./api";
 
 /**
  * In here you should create the client you'll use to communicate with the backend.
@@ -9,15 +9,15 @@ import * as apiEndpoints from './api';
  */
 const buildClient = () => {
   const axiosInstance = axios.create();
-  return axiosInstance
-}
+  return axiosInstance;
+};
 
 const onCreate = (settings: MiddlewareConfig) => {
   const client = buildClient();
 
   return {
     config: settings,
-    client
+    client,
   };
 };
 

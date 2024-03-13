@@ -1,1 +1,1 @@
-export { exampleEndpoint } from './exampleEndpoint';
+export { exampleMethod } from "./exampleMethod";
