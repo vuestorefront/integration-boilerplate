@@ -1,5 +1,5 @@
 import { defineCommand, runMain } from "citty";
-import {commands} from "./commands"
+import { commands } from "./commands";
 
 const main = defineCommand({
   meta: {
@@ -10,8 +10,7 @@ const main = defineCommand({
   subCommands: commands,
   async setup(ctx) {
     const command = ctx.args._[0];
-    
-  }
+  },
 });
 
-export const runCommand = () =>runMain(main);
+export const runCommand = () => runMain(main);

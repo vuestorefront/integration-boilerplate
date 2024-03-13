@@ -21,14 +21,10 @@ const buildApp = async (config: MiddlewareConfig) => {
 (async () => {
   // Waiting to fix breaking change from middleware
   const app = await buildApp({ integrations } as any);
-  const port = Number(process.env.API_PORT) || 8181;
+  const port = Number(process.env.API_PORT) || 4000;
 
   app.listen(port, "", () => {
     // eslint-disable-next-line no-console
     console.log(`API server listening on port ${port}`);
-    if (process.env.IS_MULTISTORE_ENABLED === "false") {
-      // eslint-disable-next-line no-console
-      console.log("Multistore is not enabled");
-    }
   });
 })();

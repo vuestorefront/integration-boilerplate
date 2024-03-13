@@ -2,14 +2,16 @@ import { Template } from "./types";
 
 export const apiMethod: Template = ({ name }) => ({
   path: `packages/api-client/src/api/${name}/index.ts`,
-  contents: `import { Endpoints } from '../../types';
+  contents: `import consola from "consola";
+import { BoilerplateIntegrationContext, TODO } from "../../types";
 
-export const ${name}: Endpoints['${name}'] = async (
-  context,
-  params
+export const ${name} = async (
+  context: BoilerplateIntegrationContext,
+  params: TODO
 ) => {
-  console.log('${name} has been called');
+  consola.log("${name} has been called");
 
-  return { data: 'Hello from ${name} endpoint!' };
+  return { data: "Hello from ${name} endpoint!" };
 };
-`})
+`,
+});

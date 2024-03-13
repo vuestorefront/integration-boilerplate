@@ -3,10 +3,19 @@ import consola from "consola";
 import { BoilerplateIntegrationContext, TODO } from "../../types";
 
 /**
- * Example method that is available in the Middleware as an `exampleEndpoint` endpoint.
- * Use it as a reference for your own methods.
+ * Greets the integrator with a friendly message.
+ *
+ * @remarks
+ * This is an example method that can be used as a starting point for creating new methods.
+ *
+ * @example
+ * SDK usage:
+ * ```ts
+ * const result = await sdk.boilerplate.exampleMethod("test");
+ * console.log(result); // { data: "Hello, Vue Storefront Integrator!" }
+ * ```
  */
-export const exampleEndpoint = async (
+export const exampleMethod = async (
   context: BoilerplateIntegrationContext,
   params: TODO
 ) => {

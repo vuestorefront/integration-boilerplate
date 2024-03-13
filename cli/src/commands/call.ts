@@ -1,84 +1,83 @@
-import { existsSync, promises as fsp } from 'fs'
-import { dirname, resolve } from 'pathe'
-import { consola } from 'consola'
-import { templates } from '../domains/add/templates'
-import { defineCommand } from 'citty'
+import { existsSync, promises as fsp } from "fs";
+import { dirname, resolve } from "pathe";
+import { consola } from "consola";
+import { defineCommand } from "citty";
+import { templates } from "../domains/add/templates";
 
 export default defineCommand({
   meta: {
-    name: 'add',
-    description: 'Create a new template file.',
+    name: "add",
+    description: "Create a new template file.",
   },
   args: {
     cwd: {
-      type: 'string',
-      description: 'Current working directory',
+      type: "string",
+      description: "Current working directory",
     },
     logLevel: {
-      type: 'string',
-      description: 'Log level',
+      type: "string",
+      description: "Log level",
     },
     force: {
-      type: 'boolean',
-      description: 'Override existing file',
+      type: "boolean",
+      description: "Override existing file",
     },
     endpoint: {
-      type: 'positional',
+      type: "positional",
       required: true,
-      valueHint: 'name',
+      valueHint: "name",
     },
   },
   async run(ctx) {
-    const endpoint = ctx.args.endpoint
+    const { endpoint } = ctx.args;
 
-    console.log('todo: make a call' + endpoint)
-  }
-})
+    console.log(`todo: make a call${endpoint}`);
+  },
+});
 
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function makeTemplate(template: string, name: string, force = false) {
-
   // Validate template name
   if (!templates[template]) {
     consola.error(
       `Template ${template} is not supported. Possible values: ${Object.keys(
-        templates,
-      ).join(', ')}`,
-    )
-    process.exit(1)
+        templates
+      ).join(", ")}`
+    );
+    process.exit(1);
   }
 
   // Validate options
   if (!name) {
-    consola.error('name argument is missing!')
-    process.exit(1)
+    consola.error("name argument is missing!");
+    process.exit(1);
   }
 
   // Resolve template
-  const res = templates[template]({ name })
+  const res = templates[template]({ name });
 
   // Resolve full path to generated file
-  const path = resolve(res.path)
+  const path = resolve(res.path);
 
   // Ensure not overriding user code
   if (!force && existsSync(path)) {
     consola.error(
-      `File exists: ${path} . Use --force to override or use a different name.`,
-    )
-    process.exit(1)
+      `File exists: ${path} . Use --force to override or use a different name.`
+    );
+    process.exit(1);
   }
 
   // Ensure parent directory exists
-  const parentDir = dirname(path)
+  const parentDir = dirname(path);
   if (!existsSync(parentDir)) {
-    consola.info('Creating directory', parentDir)
-    if (template === 'page') {
-      consola.info('This enables vue-router functionality!')
+    consola.info("Creating directory", parentDir);
+    if (template === "page") {
+      consola.info("This enables vue-router functionality!");
     }
-    await fsp.mkdir(parentDir, { recursive: true })
+    await fsp.mkdir(parentDir, { recursive: true });
   }
 
   // Write file
-  await fsp.writeFile(path, res.contents.trim() + '\n')
-  consola.info(`🪄 Generated a new ${template} in ${path}`)
+  await fsp.writeFile(path, `${res.contents.trim()}\n`);
+  consola.info(`🪄 Generated a new ${template} in ${path}`);
 }

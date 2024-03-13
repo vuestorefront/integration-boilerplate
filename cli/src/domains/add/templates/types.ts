@@ -1,7 +1,7 @@
 export interface TemplateOptions {
-  name: string
+  name: string;
 }
 
 export interface Template {
-  (options: TemplateOptions): { path: string; contents: string }
+  (options: TemplateOptions): { path: string; contents: string };
 }
