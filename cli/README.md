@@ -1,6 +1,6 @@
-# The VSF Integration Builder's CLI
+# The Alokai Integration Builder's CLI
 
-The VSF Integration Builder's CLI is a local command line interface built to help you move quickly when creating an integration. It provides a fast and efficient way to scaffold new methods and perform various tasks related to your integration project.
+The Alokai Integration Builder's CLI is a local command line interface built to help you move quickly when creating an integration. It provides a fast and efficient way to scaffold new methods and perform various tasks related to your integration project.
 
 ## Usage
 run `yarn vsf` to see the available commands.

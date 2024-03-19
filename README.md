@@ -1,4 +1,4 @@
-# SDK Based Integration Boilerplate for VSF 2
+# SDK Based Integration Boilerplate for Alokai
 
 ## Creating a new integration? 
 The fastest way to get started is to use our CLI to generate a new integration boilerplate
@@ -9,7 +9,7 @@ The fastest way to get started is to use our CLI to generate a new integration b
 
 The CLI will ask you a few questions and generate a new integration boilerplate based on your answers.
 
-For more information about creating a custom integration using the VSF SDK, please visit the [documentation](https://docs.vuestorefront.io/integrations/custom/quick-start).
+For more information about creating a custom integration using the Alokai SDK, please visit the [documentation](https://docs.vuestorefront.io/integrations/custom/quick-start).
 
 From the project root, you can run the one of following commands, depending on your package manager:
 
@@ -53,7 +53,7 @@ we would be delighted to accept your pull requests.
 > **For internal use only.**
 > All changes are recorded in the [CHANGELOG.md](CHANGELOG.md) file.
 
-This is a new integration boilerplate for VSF 2 integrations based on the SDK.
+This is a new integration boilerplate for Alokai integrations based on the SDK.
 
 ## Requirements:
 
