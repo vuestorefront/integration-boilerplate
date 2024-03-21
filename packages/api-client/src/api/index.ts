@@ -1,1 +1,1 @@
-export { exampleMethod } from "./exampleMethod";
+export * from "./exampleMethod";
