@@ -1,4 +1,6 @@
 import { WithoutContext } from "@vue-storefront/middleware";
-import * as api from "../../api";
+import * as apiMethods from "../../api";
 
-export type Endpoints = WithoutContext<typeof api>;
+export type ApiMethods = typeof apiMethods;
+
+export type Endpoints = WithoutContext<ApiMethods>;
