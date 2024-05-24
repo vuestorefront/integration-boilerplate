@@ -60,6 +60,17 @@ This is a new integration boilerplate for Alokai integrations based on the SDK.
 - NodeJS v16 or later,
 - [Yarn](https://yarnpkg.com/).
 
+## Consuming Project Requirements
+If you would like to use an interation based on this boilerplate in a project, the project must meet these requirements. 
+
+- @vue-storefront/middleware@3.9.0
+- @vue-storefront/sdk@1.4.0
+- @vue-storefront/next@1.1.0 || @vue-storefront/nuxt@3.1.0
+
+>  You may need to add resolutions for @vue-storefront/sdk in frontend package.json if your project requires different sdk versions in addition to the version required here.
+
+>  If your project needs to be upgraded you can check out the [Migration Guide](https://docs.alokai.com/storefront/change-log/unified-sdk#migration-guide)
+
 ## Repository structure
 
 This repository contains a few necessary packages to help you get started building your new integration:
