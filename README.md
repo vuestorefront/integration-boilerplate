@@ -63,9 +63,10 @@ This is a new integration boilerplate for Alokai integrations based on the SDK.
 ## Consuming Project Requirements
 If you would like to use an interation based on this boilerplate in a project, the project must meet these requirements. 
 
-- @vue-storefront/middleware@3.9.0
-- @vue-storefront/sdk@1.4.0
-- @vue-storefront/next@1.1.0 || @vue-storefront/nuxt@3.1.0
+Minimum Versions
+- "@vue-storefront/middleware": "^@3.9.0"
+- "@vue-storefront/sdk": "@1.4.0"
+- "@vue-storefront/next": "@1.1.0" || "@vue-storefront/nuxt": "3.1.0"
 
 >  You may need to add resolutions for @vue-storefront/sdk in frontend package.json if your project requires different sdk versions in addition to the version required here.
 
